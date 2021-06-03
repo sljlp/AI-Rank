@@ -1,0 +1,667 @@
+2021-05-11 07:05:28 [INFO]	AI-Rank-log 1620687928.4333465 load_data, checksum:37724b19b6e5d41f9f147936d60b3c29
+2021-05-11 07:05:28 [INFO]	AI-Rank-log 1620687928.43346 test_begin
+2021-05-11 07:05:28 [INFO]	
+------------Environment Information-------------
+platform: Linux-4.14.0_1-0-0-32-x86_64-with-Ubuntu-18.04-bionic
+Python: 3.6.9 (default, Jan 26 2021, 15:33:00) [GCC 8.4.0]
+Paddle compiled with cuda: True
+NVCC: Build cuda_11.0_bu.TC445_37.28845127_0
+cudnn: 8.0
+GPUs used: 1
+CUDA_VISIBLE_DEVICES: 0
+GPU: ['GPU 0: Tesla V100-SXM2-32GB']
+GCC: gcc (GCC) 8.2.0
+PaddlePaddle: 0.0.0
+OpenCV: 4.5.1
+------------------------------------------------
+args iters:  100
+2021-05-11 07:05:28 [INFO]	train dataset len: 2975
+2021-05-11 07:05:28 [INFO]	
+---------------Config Information---------------
+batch_size: 4
+iters: 100
+learning_rate:
+  decay:
+    end_lr: 0.0
+    power: 0.9
+    type: poly
+  value: 0.01
+loss:
+  coef:
+  - 1
+  types:
+  - ignore_index: 255
+    type: CrossEntropyLoss
+model:
+  aspp_ratios:
+  - 1
+  - 12
+  - 24
+  - 36
+  backbone:
+    multi_grid:
+    - 1
+    - 2
+    - 4
+    output_stride: 8
+    pretrained: https://bj.bcebos.com/paddleseg/dygraph/resnet50_vd_ssld_v2.tar.gz
+    type: ResNet50_vd
+  backbone_indices:
+  - 0
+  - 3
+  num_classes: 19
+  type: DeepLabV3P
+optimizer:
+  type: sgd
+  weight_decay: 4.0e-05
+train_dataset:
+  dataset_root: data/cityscapes
+  mode: train
+  transforms:
+  - max_scale_factor: 2.0
+    min_scale_factor: 0.5
+    scale_step_size: 0.25
+    type: ResizeStepScaling
+  - crop_size:
+    - 1024
+    - 512
+    type: RandomPaddingCrop
+  - type: RandomHorizontalFlip
+  - type: RandomDistort
+  - type: Normalize
+  type: Cityscapes
+val_dataset:
+  dataset_root: data/cityscapes
+  mode: val
+  transforms:
+  - type: Normalize
+  type: Cityscapes
+------------------------------------------------
+W0511 07:05:28.609908  4102 device_context.cc:403] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.0, Runtime API Version: 11.0
+W0511 07:05:28.609937  4102 device_context.cc:421] device: 0, cuDNN Version: 8.0.
+iters:  100
+2021-05-11 07:05:31 [INFO]	Loading pretrained model from https://bj.bcebos.com/paddleseg/dygraph/resnet50_vd_ssld_v2.tar.gz
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/appdirs.py:130: DeprecationWarning: invalid escape sequence \D
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/appdirs.py:235: DeprecationWarning: invalid escape sequence \P
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/appdirs.py:130: DeprecationWarning: invalid escape sequence \D
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/appdirs.py:235: DeprecationWarning: invalid escape sequence \P
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:147: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:832: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:2736: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:2914: DeprecationWarning: invalid escape sequence \g
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:147: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:832: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:2736: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:2914: DeprecationWarning: invalid escape sequence \g
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/depends.py:2: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/msvc.py:289: DeprecationWarning: invalid escape sequence \c
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/msvc.py:311: DeprecationWarning: invalid escape sequence \c
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/msvc.py:289: DeprecationWarning: invalid escape sequence \c
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/msvc.py:311: DeprecationWarning: invalid escape sequence \c
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/command/easy_install.py:2028: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/command/easy_install.py:2028: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/sandbox.py:218: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/sandbox.py:394: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/sandbox.py:218: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/sandbox.py:394: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:37: DeprecationWarning: invalid escape sequence \s
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:38: DeprecationWarning: invalid escape sequence \?
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:164: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:208: DeprecationWarning: invalid escape sequence \s
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:37: DeprecationWarning: invalid escape sequence \s
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:38: DeprecationWarning: invalid escape sequence \?
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:164: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:208: DeprecationWarning: invalid escape sequence \s
+/root/paddlejob/workspace/env_run/PaddleSeg/paddleseg/cvlibs/param_init.py:89: DeprecationWarning: invalid escape sequence \s
+  """
+/root/paddlejob/workspace/env_run/PaddleSeg/paddleseg/models/losses/binary_cross_entropy_loss.py:82: DeprecationWarning: invalid escape sequence \|
+  """
+/root/paddlejob/workspace/env_run/PaddleSeg/paddleseg/models/losses/lovasz_loss.py:50: DeprecationWarning: invalid escape sequence \i
+  """
+/root/paddlejob/workspace/env_run/PaddleSeg/paddleseg/models/losses/lovasz_loss.py:77: DeprecationWarning: invalid escape sequence \i
+  """
+/root/paddlejob/workspace/env_run/PaddleSeg/paddleseg/models/losses/lovasz_loss.py:120: DeprecationWarning: invalid escape sequence \i
+  """
+2021-05-11 07:05:31,173 - INFO - Lock 139795409337648 acquired on /root/.paddleseg/tmp/resnet50_vd_ssld_v2
+2021-05-11 07:05:31,173 - INFO - Lock 139795409337648 released on /root/.paddleseg/tmp/resnet50_vd_ssld_v2
+2021-05-11 07:05:32 [INFO]	There are 275/275 variables loaded into ResNet_vd.
+cfg model ------------- <class 'paddleseg.models.deeplab.DeepLabV3P'>
+DeepLabV3P(
+  (backbone): ResNet_vd(
+    (conv1_1): ConvBNLayer(
+      (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+      (_conv): Conv2D(3, 32, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+      (_batch_norm): BatchNorm2D(num_features=32, momentum=0.9, epsilon=1e-05)
+      (_act_op): Activation(
+        (act_func): ReLU()
+      )
+    )
+    (conv1_2): ConvBNLayer(
+      (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+      (_conv): Conv2D(32, 32, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      (_batch_norm): BatchNorm2D(num_features=32, momentum=0.9, epsilon=1e-05)
+      (_act_op): Activation(
+        (act_func): ReLU()
+      )
+    )
+    (conv1_3): ConvBNLayer(
+      (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+      (_conv): Conv2D(32, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+      (_batch_norm): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+      (_act_op): Activation(
+        (act_func): ReLU()
+      )
+    )
+    (pool2d_max): MaxPool2D(kernel_size=3, stride=2, padding=1)
+    (bb_0_0): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 64, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+      (short): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_0_1): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 64, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_0_2): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 64, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 64, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=64, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(64, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_1_0): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 128, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 128, kernel_size=[3, 3], stride=[2, 2], padding=1, data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+      (short): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_1_1): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 128, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_1_2): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 128, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_1_3): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 128, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 128, kernel_size=[3, 3], padding=1, data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=128, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(128, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_2_0): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 256, kernel_size=[3, 3], dilation=[2, 2], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=1024, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+      (short): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=1024, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_2_1): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 256, kernel_size=[3, 3], dilation=[2, 2], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=1024, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_2_2): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 256, kernel_size=[3, 3], dilation=[2, 2], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=1024, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_2_3): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 256, kernel_size=[3, 3], dilation=[2, 2], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=1024, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_2_4): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 256, kernel_size=[3, 3], dilation=[2, 2], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=1024, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_2_5): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 256, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 256, kernel_size=[3, 3], dilation=[2, 2], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(256, 1024, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=1024, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_3_0): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 512, kernel_size=[3, 3], dilation=[4, 4], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 2048, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=2048, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+      (short): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(1024, 2048, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=2048, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_3_1): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(2048, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 512, kernel_size=[3, 3], dilation=[8, 8], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 2048, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=2048, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+    (bb_3_2): BottleneckBlock(
+      (conv0): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(2048, 512, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv1): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 512, kernel_size=[3, 3], dilation=[16, 16], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=512, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation(
+          (act_func): ReLU()
+        )
+      )
+      (conv2): ConvBNLayer(
+        (_pool2d_avg): AvgPool2D(kernel_size=2, stride=2, padding=0)
+        (_conv): Conv2D(512, 2048, kernel_size=[1, 1], data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=2048, momentum=0.9, epsilon=1e-05)
+        (_act_op): Activation()
+      )
+    )
+  )
+  (head): DeepLabV3PHead(
+    (aspp): ASPPModule(
+      (aspp_blocks): LayerList(
+        (0): ConvBNReLU(
+          (_conv): Conv2D(2048, 256, kernel_size=[1, 1], data_format=NCHW)
+          (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        )
+        (1): SeparableConvBNReLU(
+          (depthwise_conv): ConvBN(
+            (_conv): Conv2D(2048, 2048, kernel_size=[3, 3], padding=12, dilation=[12, 12], groups=2048, data_format=NCHW)
+            (_batch_norm): BatchNorm2D(num_features=2048, momentum=0.9, epsilon=1e-05)
+          )
+          (piontwise_conv): ConvBNReLU(
+            (_conv): Conv2D(2048, 256, kernel_size=[1, 1], padding=same, data_format=NCHW)
+            (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+          )
+        )
+        (2): SeparableConvBNReLU(
+          (depthwise_conv): ConvBN(
+            (_conv): Conv2D(2048, 2048, kernel_size=[3, 3], padding=24, dilation=[24, 24], groups=2048, data_format=NCHW)
+            (_batch_norm): BatchNorm2D(num_features=2048, momentum=0.9, epsilon=1e-05)
+          )
+          (piontwise_conv): ConvBNReLU(
+            (_conv): Conv2D(2048, 256, kernel_size=[1, 1], padding=same, data_format=NCHW)
+            (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+          )
+        )
+        (3): SeparableConvBNReLU(
+          (depthwise_conv): ConvBN(
+            (_conv): Conv2D(2048, 2048, kernel_size=[3, 3], padding=36, dilation=[36, 36], groups=2048, data_format=NCHW)
+            (_batch_norm): BatchNorm2D(num_features=2048, momentum=0.9, epsilon=1e-05)
+          )
+          (piontwise_conv): ConvBNReLU(
+            (_conv): Conv2D(2048, 256, kernel_size=[1, 1], padding=same, data_format=NCHW)
+            (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+          )
+        )
+      )
+      (global_avg_pool): Sequential(
+        (0): AdaptiveAvgPool2D(output_size=(1, 1))
+        (1): ConvBNReLU(
+          (_conv): Conv2D(2048, 256, kernel_size=[1, 1], padding=same, data_format=NCHW)
+          (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        )
+      )
+      (conv_bn_relu): ConvBNReLU(
+        (_conv): Conv2D(1280, 256, kernel_size=[1, 1], padding=same, data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+      )
+      (dropout): Dropout(p=0.1, axis=None, mode=upscale_in_train)
+    )
+    (decoder): Decoder(
+      (conv_bn_relu1): ConvBNReLU(
+        (_conv): Conv2D(256, 48, kernel_size=[1, 1], padding=same, data_format=NCHW)
+        (_batch_norm): BatchNorm2D(num_features=48, momentum=0.9, epsilon=1e-05)
+      )
+      (conv_bn_relu2): SeparableConvBNReLU(
+        (depthwise_conv): ConvBN(
+          (_conv): Conv2D(304, 304, kernel_size=[3, 3], padding=1, groups=304, data_format=NCHW)
+          (_batch_norm): BatchNorm2D(num_features=304, momentum=0.9, epsilon=1e-05)
+        )
+        (piontwise_conv): ConvBNReLU(
+          (_conv): Conv2D(304, 256, kernel_size=[1, 1], padding=same, data_format=NCHW)
+          (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        )
+      )
+      (conv_bn_relu3): SeparableConvBNReLU(
+        (depthwise_conv): ConvBN(
+          (_conv): Conv2D(256, 256, kernel_size=[3, 3], padding=1, groups=256, data_format=NCHW)
+          (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        )
+        (piontwise_conv): ConvBNReLU(
+          (_conv): Conv2D(256, 256, kernel_size=[1, 1], padding=same, data_format=NCHW)
+          (_batch_norm): BatchNorm2D(num_features=256, momentum=0.9, epsilon=1e-05)
+        )
+      )
+      (conv): Conv2D(256, 19, kernel_size=[1, 1], data_format=NCHW)
+    )
+  )
+)
+-----------------------------------------
+2021-05-11 07:05:32 [INFO]	use amp to train
+2021-05-11 07:05:43 [INFO]	[TRAIN] epoch: 1, iter: 10/100, loss: 2.3879, lr: 0.009186, batch_cost: 1.0567, reader_cost: 0.15002, ips: 3.7853 samples/sec | ETA 00:01:35
+2021-05-11 07:05:45 [INFO]	[TRAIN] epoch: 1, iter: 20/100, loss: 1.2311, lr: 0.008272, batch_cost: 0.2575, reader_cost: 0.00053, ips: 15.5325 samples/sec | ETA 00:00:20
+2021-05-11 07:05:48 [INFO]	[TRAIN] epoch: 1, iter: 30/100, loss: 1.0491, lr: 0.007347, batch_cost: 0.2626, reader_cost: 0.00133, ips: 15.2299 samples/sec | ETA 00:00:18
+2021-05-11 07:05:50 [INFO]	[TRAIN] epoch: 1, iter: 40/100, loss: 1.0066, lr: 0.006409, batch_cost: 0.2632, reader_cost: 0.00119, ips: 15.1962 samples/sec | ETA 00:00:15
+2021-05-11 07:05:53 [INFO]	[TRAIN] epoch: 1, iter: 50/100, loss: 1.0409, lr: 0.005455, batch_cost: 0.2585, reader_cost: 0.00076, ips: 15.4722 samples/sec | ETA 00:00:12
+2021-05-11 07:05:56 [INFO]	[TRAIN] epoch: 1, iter: 60/100, loss: 0.9004, lr: 0.004482, batch_cost: 0.2586, reader_cost: 0.00149, ips: 15.4690 samples/sec | ETA 00:00:10
+2021-05-11 07:05:58 [INFO]	[TRAIN] epoch: 1, iter: 70/100, loss: 0.9275, lr: 0.003485, batch_cost: 0.2579, reader_cost: 0.00103, ips: 15.5104 samples/sec | ETA 00:00:07
+2021-05-11 07:06:01 [INFO]	[TRAIN] epoch: 1, iter: 80/100, loss: 1.3218, lr: 0.002455, batch_cost: 0.2577, reader_cost: 0.00117, ips: 15.5234 samples/sec | ETA 00:00:05
+2021-05-11 07:06:03 [INFO]	[TRAIN] epoch: 1, iter: 90/100, loss: 0.9137, lr: 0.001372, batch_cost: 0.2579, reader_cost: 0.00092, ips: 15.5076 samples/sec | ETA 00:00:02
+2021-05-11 07:06:06 [INFO]	[TRAIN] epoch: 1, iter: 100/100, loss: 1.0357, lr: 0.000158, batch_cost: 0.2571, reader_cost: 0.00087, ips: 15.5567 samples/sec | ETA 00:00:00
+/usr/local/lib/python3.6/dist-packages/paddle/nn/layer/norm.py:648: UserWarning: When training, we now always track global mean and variance.
+  "When training, we now always track global mean and variance.")
+<class 'paddle.nn.layer.pooling.AvgPool2D'>'s flops has been counted
+<class 'paddle.nn.layer.conv.Conv2D'>'s flops has been counted
+<class 'paddle.nn.layer.norm.BatchNorm2D'>'s flops has been counted
+<class 'paddle.nn.layer.activation.ReLU'>'s flops has been counted
+Cannot find suitable count function for <class 'paddle.nn.layer.pooling.MaxPool2D'>. Treat it as zero FLOPs.
+Cannot find suitable count function for <class 'paddleseg.models.layers.activation.Activation'>. Treat it as zero FLOPs.
+<class 'paddle.nn.layer.pooling.AdaptiveAvgPool2D'>'s flops has been counted
+<class 'paddle.nn.layer.common.Dropout'>'s flops has been counted
+Total Flops: 645499392     Total Params: 26794243

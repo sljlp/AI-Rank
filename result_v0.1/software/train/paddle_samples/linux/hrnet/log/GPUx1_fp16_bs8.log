@@ -1,0 +1,152 @@
+2021-05-12 00:53:00 [INFO]	AI-Rank-log 1620751980.3714414 load_data, checksum:xxxxxx
+2021-05-12 00:53:00 [INFO]	AI-Rank-log 1620751980.3715487 test_begin
+2021-05-12 00:53:00 [INFO]	
+------------Environment Information-------------
+platform: Linux-4.14.0_1-0-0-32-x86_64-with-Ubuntu-18.04-bionic
+Python: 3.6.9 (default, Jan 26 2021, 15:33:00) [GCC 8.4.0]
+Paddle compiled with cuda: True
+NVCC: Build cuda_11.0_bu.TC445_37.28845127_0
+cudnn: 8.0
+GPUs used: 1
+CUDA_VISIBLE_DEVICES: 0
+GPU: ['GPU 0: Tesla V100-SXM2-32GB']
+GCC: gcc (GCC) 8.2.0
+PaddlePaddle: 0.0.0
+OpenCV: 4.5.1
+------------------------------------------------
+args iters:  100
+2021-05-12 00:53:00 [INFO]	train dataset len: 2975
+2021-05-12 00:53:00 [INFO]	
+---------------Config Information---------------
+batch_size: 8
+iters: 100
+learning_rate:
+  decay:
+    end_lr: 0.0
+    power: 0.9
+    type: poly
+  value: 0.01
+loss:
+  coef:
+  - 1
+  types:
+  - ignore_index: 255
+    type: CrossEntropyLoss
+model:
+  backbone:
+    pretrained: https://bj.bcebos.com/paddleseg/dygraph/hrnet_w18_ssld.tar.gz
+    type: HRNet_W18
+  backbone_indices:
+  - -1
+  bias: false
+  num_classes: 19
+  type: FCN
+optimizer:
+  type: sgd
+  weight_decay: 0.0005
+train_dataset:
+  dataset_root: data/cityscapes
+  mode: train
+  transforms:
+  - max_scale_factor: 2.0
+    min_scale_factor: 0.5
+    scale_step_size: 0.25
+    type: ResizeStepScaling
+  - crop_size:
+    - 1024
+    - 512
+    type: RandomPaddingCrop
+  - type: RandomHorizontalFlip
+  - type: RandomDistort
+  - type: Normalize
+  type: Cityscapes
+val_dataset:
+  dataset_root: data/cityscapes
+  mode: val
+  transforms:
+  - type: Normalize
+  type: Cityscapes
+------------------------------------------------
+W0512 00:53:00.543972  4118 device_context.cc:403] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.2, Runtime API Version: 11.0
+W0512 00:53:00.544001  4118 device_context.cc:421] device: 0, cuDNN Version: 8.0.
+iters:  100
+2021-05-12 00:53:03 [INFO]	Loading pretrained model from https://bj.bcebos.com/paddleseg/dygraph/hrnet_w18_ssld.tar.gz
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/appdirs.py:130: DeprecationWarning: invalid escape sequence \D
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/appdirs.py:235: DeprecationWarning: invalid escape sequence \P
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/appdirs.py:130: DeprecationWarning: invalid escape sequence \D
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/appdirs.py:235: DeprecationWarning: invalid escape sequence \P
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:147: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:832: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:2736: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:2914: DeprecationWarning: invalid escape sequence \g
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:147: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:832: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:2736: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/pkg_resources/_vendor/pyparsing.py:2914: DeprecationWarning: invalid escape sequence \g
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/depends.py:2: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/msvc.py:289: DeprecationWarning: invalid escape sequence \c
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/msvc.py:311: DeprecationWarning: invalid escape sequence \c
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/msvc.py:289: DeprecationWarning: invalid escape sequence \c
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/msvc.py:311: DeprecationWarning: invalid escape sequence \c
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/command/easy_install.py:2028: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/command/easy_install.py:2028: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/sandbox.py:218: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/sandbox.py:394: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/sandbox.py:218: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/sandbox.py:394: DeprecationWarning: invalid escape sequence \.
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:37: DeprecationWarning: invalid escape sequence \s
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:38: DeprecationWarning: invalid escape sequence \?
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:164: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:208: DeprecationWarning: invalid escape sequence \s
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:37: DeprecationWarning: invalid escape sequence \s
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:38: DeprecationWarning: invalid escape sequence \?
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:164: DeprecationWarning: invalid escape sequence \d
+/usr/local/lib/python3.6/dist-packages/setuptools-33.1.1-py3.6.egg/setuptools/package_index.py:208: DeprecationWarning: invalid escape sequence \s
+/root/paddlejob/workspace/env_run/PaddleSeg/paddleseg/cvlibs/param_init.py:89: DeprecationWarning: invalid escape sequence \s
+  """
+/root/paddlejob/workspace/env_run/PaddleSeg/paddleseg/models/losses/binary_cross_entropy_loss.py:82: DeprecationWarning: invalid escape sequence \|
+  """
+/root/paddlejob/workspace/env_run/PaddleSeg/paddleseg/models/losses/lovasz_loss.py:50: DeprecationWarning: invalid escape sequence \i
+  """
+/root/paddlejob/workspace/env_run/PaddleSeg/paddleseg/models/losses/lovasz_loss.py:77: DeprecationWarning: invalid escape sequence \i
+  """
+/root/paddlejob/workspace/env_run/PaddleSeg/paddleseg/models/losses/lovasz_loss.py:120: DeprecationWarning: invalid escape sequence \i
+  """
+2021-05-12 00:53:03,252 - INFO - Lock 139690459383232 acquired on /root/.paddleseg/tmp/hrnet_w18_ssld
+Connecting to https://bj.bcebos.com/paddleseg/dygraph/hrnet_w18_ssld.tar.gz
+Downloading hrnet_w18_ssld.tar.gz
+
+[                                                  ] 0.00%
+[=                                                 ] 3.47%
+[==========                                        ] 21.65%
+[===================                               ] 39.74%
+[===========================                       ] 55.94%
+[==================================                ] 69.96%
+[==========================================        ] 84.46%
+[===============================================   ] 94.37%
+[==================================================] 100.00%
+Uncompress hrnet_w18_ssld.tar.gz
+
+[                                                  ] 0.00%
+[=========================                         ] 50.00%
+[==================================================] 100.00%
+2021-05-12 00:53:07,012 - INFO - Lock 139690459383232 released on /root/.paddleseg/tmp/hrnet_w18_ssld
+2021-05-12 00:53:08 [INFO]	There are 1525/1525 variables loaded into HRNet.
+2021-05-12 00:53:08 [INFO]	use amp to train
+2021-05-12 00:53:17 [INFO]	[TRAIN] epoch: 1, iter: 10/100, loss: 2.1058, lr: 0.009186, batch_cost: 0.9290, reader_cost: 0.22456, ips: 8.6114 samples/sec | ETA 00:01:23
+2021-05-12 00:53:22 [INFO]	[TRAIN] epoch: 1, iter: 20/100, loss: 0.9580, lr: 0.008272, batch_cost: 0.4920, reader_cost: 0.00233, ips: 16.2605 samples/sec | ETA 00:00:39
+2021-05-12 00:53:27 [INFO]	[TRAIN] epoch: 1, iter: 30/100, loss: 0.9359, lr: 0.007347, batch_cost: 0.4922, reader_cost: 0.00301, ips: 16.2537 samples/sec | ETA 00:00:34
+2021-05-12 00:53:32 [INFO]	[TRAIN] epoch: 1, iter: 40/100, loss: 0.9712, lr: 0.006409, batch_cost: 0.4937, reader_cost: 0.00238, ips: 16.2035 samples/sec | ETA 00:00:29
+2021-05-12 00:53:37 [INFO]	[TRAIN] epoch: 1, iter: 50/100, loss: 0.8033, lr: 0.005455, batch_cost: 0.4930, reader_cost: 0.00312, ips: 16.2270 samples/sec | ETA 00:00:24
+2021-05-12 00:53:42 [INFO]	[TRAIN] epoch: 1, iter: 60/100, loss: 0.8490, lr: 0.004482, batch_cost: 0.4918, reader_cost: 0.00122, ips: 16.2683 samples/sec | ETA 00:00:19
+2021-05-12 00:53:47 [INFO]	[TRAIN] epoch: 1, iter: 70/100, loss: 0.6658, lr: 0.003485, batch_cost: 0.4910, reader_cost: 0.00119, ips: 16.2937 samples/sec | ETA 00:00:14
+2021-05-12 00:53:52 [INFO]	[TRAIN] epoch: 1, iter: 80/100, loss: 0.6602, lr: 0.002455, batch_cost: 0.4902, reader_cost: 0.00305, ips: 16.3187 samples/sec | ETA 00:00:09
+2021-05-12 00:53:57 [INFO]	[TRAIN] epoch: 1, iter: 90/100, loss: 0.6995, lr: 0.001372, batch_cost: 0.4887, reader_cost: 0.00050, ips: 16.3698 samples/sec | ETA 00:00:04
+2021-05-12 00:54:01 [INFO]	[TRAIN] epoch: 1, iter: 100/100, loss: 0.6728, lr: 0.000158, batch_cost: 0.4888, reader_cost: 0.00085, ips: 16.3657 samples/sec | ETA 00:00:00
+/usr/local/lib/python3.6/dist-packages/paddle/nn/layer/norm.py:648: UserWarning: When training, we now always track global mean and variance.
+  "When training, we now always track global mean and variance.")
+/usr/local/lib/python3.6/dist-packages/paddle/fluid/dygraph/math_op_patch.py:239: UserWarning: The dtype of left and right variables are not the same, left dtype is paddle.float16, but right dtype is paddle.float32, the right dtype will convert to paddle.float16
+  format(lhs_dtype, rhs_dtype, lhs_dtype))
+<class 'paddle.nn.layer.conv.Conv2D'>'s flops has been counted
+<class 'paddle.nn.layer.norm.BatchNorm2D'>'s flops has been counted
+Total Flops: -1736046592     Total Params: 9675306
