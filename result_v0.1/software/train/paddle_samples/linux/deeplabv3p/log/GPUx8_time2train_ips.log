@@ -10,7 +10,7 @@ run_mode: collective
 server_num: None
 servers: 
 training_script: train.py
-training_script_args: ['--config', 'benchmark/deeplabv3p.yml', '--iters', '80000', '--batch_size', '4', '--learning_rate', '0.01', '--save_interval', '8000', '--keep_checkpoint_max', '10', '--num_workers', '8', '--do_eval', '--log_iters', '20', '--fp16', '--checksum', 'xxxxx']
+training_script_args: ['--config', 'benchmark/deeplabv3p.yml', '--iters', '80000', '--batch_size', '4', '--learning_rate', '0.01', '--save_interval', '8000', '--keep_checkpoint_max', '10', '--num_workers', '8', '--do_eval', '--log_iters', '20', '--fp16', '--checksum', '37724b19b6e5d41f9f147936d60b3c29']
 worker_num: None
 workers: 
 ------------------------------------------------
@@ -64,7 +64,7 @@ launch proc_id:4174 idx:7
   """
 /root/paddlejob/workspace/env_run/PaddleSeg/paddleseg/models/losses/lovasz_loss.py:120: DeprecationWarning: invalid escape sequence \i
   """
-2021-05-11 07:05:24 [INFO]	AI-Rank-log 1620687924.667827 load_data, checksum:xxxxx
+2021-05-11 07:05:24 [INFO]	AI-Rank-log 1620687924.667827 load_data, checksum:37724b19b6e5d41f9f147936d60b3c29
 2021-05-11 07:05:24 [INFO]	AI-Rank-log 1620687924.6679616 test_begin
 2021-05-11 07:05:24 [INFO]	
 ------------Environment Information-------------
